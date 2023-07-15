@@ -35,6 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -74,15 +75,23 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+  fonts:
+    - family: Brandon Grotesque
+      fonts:
+        - asset: fonts/brando/BrandonGrotesque-Regular.ttf
+          style: normal
+        - asset: fonts/brando/BrandonGrotesque-Bold.ttf
+          weight: 700
+        - asset: fonts/brando/BrandonGrotesque-Light.ttf
+          weight: 300
+        - asset: fonts/brando/BrandonGrotesque-Medium.ttf
+          weight: 500
+        - asset: fonts/brando/BrandonGrotesque-Thin.ttf
+          weight: 100
+    - family: Bad Script
+      fonts:
+        - asset: fonts/bad_script/BadScript-Regular.ttf
+          style: normal
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

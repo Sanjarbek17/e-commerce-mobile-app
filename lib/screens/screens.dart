@@ -1,9 +1,9 @@
-export 'home_screen.dart';
+export 'welcome_screen.dart';
 export 'cart_screen.dart';
 export 'authentication_screen.dart';
 export 'complete_screen.dart';
 export 'product_screen.dart';
 export 'splash_screen.dart';
-export 'welcome_screen.dart';
+export 'home_screen.dart';
 export 'tracking_screen.dart';
 export 'error_screen.dart';

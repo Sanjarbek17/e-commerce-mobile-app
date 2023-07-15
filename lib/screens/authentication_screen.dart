@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../route.dart';
 import '../widgets/body_scaffold.dart';
 
 class AuthenticationScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class AuthenticationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BodyScaffold(
-        onPressed: () => Navigator.pushNamed(context, '/home_screen'),
+        onPressed: () => Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.homeScreen, (_) => false),
         buttonName: 'Start Ordering',
         imagePath: 'assets/images/imgbin2.png',
         child: Column(

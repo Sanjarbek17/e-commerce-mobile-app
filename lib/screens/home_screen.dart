@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../widgets/list_of_cards.dart';
-import '../widgets/product_card.dart';
 import '../widgets/topic_row.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -87,13 +86,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 15,
-                      child: SvgPicture.asset(
-                        'assets/svg/settings.svg',
-                        color: const Color(0xFF27214D),
-                        width: 26,
-                        height: 20,
-                        // fit: BoxFit.none,
-                      ),
+                      child: SvgPicture.asset('assets/svg/settings.svg', color: const Color(0xFF27214D), width: 26, height: 20),
                     ),
                   ],
                 ),
@@ -106,41 +99,31 @@ class HomeScreen extends StatelessWidget {
           ),
           ListOfCards(
             height: 200,
+            childImgHeight: 100,
+            childImgWidth: 180,
+            childWidth: 160,
             children: const [
-              ProductCard(
-                imgHeight: 100,
-                imgWidth: 180,
-                width: 160,
-                imgPath: 'assets/images/salad.png',
-              ),
-              ProductCard(
-                imgHeight: 100,
-                imgWidth: 180,
-                width: 160,
-                imgPath: 'assets/images/salad.png',
-              ),
+              'assets/images/salad.png',
+              'assets/images/salad.png',
+              'assets/images/salad.png',
             ],
           ),
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.all(24.0),
-            child: TopicRow(),
+            child: TopicRow(
+              topics: const ['Hottest', 'Newest', 'Trending', 'Popular'],
+            ),
           ),
           ListOfCards(
             height: 180,
+            childImgHeight: 100,
+            childImgWidth: 180,
+            childWidth: 170,
             children: const [
-              ProductCard(
-                imgHeight: 100,
-                imgWidth: 180,
-                width: 170,
-                imgPath: 'assets/images/salad.png',
-              ),
-              ProductCard(
-                imgHeight: 100,
-                imgWidth: 180,
-                width: 170,
-                imgPath: 'assets/images/salad.png',
-              ),
+              'assets/images/salad.png',
+              'assets/images/salad.png',
+              'assets/images/salad.png',
             ],
           ),
         ],

@@ -24,27 +24,27 @@ class _ProductCardState extends State<ProductCard> {
   bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.onTap,
-      child: Container(
-        width: widget.width,
-        // height: 83,
-        padding: const EdgeInsets.all(16.0),
-        margin: const EdgeInsets.only(right: 24.0),
-        decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          shadows: const [
-            BoxShadow(
-              color: Color(0x0C202020),
-              blurRadius: 60,
-              offset: Offset(0, 30),
-              spreadRadius: 0,
-            )
-          ],
+    return Container(
+      width: widget.width,
+      // height: 83,
+      padding: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.only(right: 24.0),
+      decoration: ShapeDecoration(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
+        shadows: const [
+          BoxShadow(
+            color: Color(0x0C202020),
+            blurRadius: 60,
+            offset: Offset(0, 30),
+            spreadRadius: 0,
+          )
+        ],
+      ),
+      child: InkWell(
+        onTap: widget.onTap,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

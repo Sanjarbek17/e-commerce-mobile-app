@@ -1,3 +1,4 @@
+import 'package:e_commerce_mobile_app/widgets/bottom_sheets/delivery_sheet.dart';
 import 'package:e_commerce_mobile_app/widgets/custom_back_button.dart';
 import 'package:e_commerce_mobile_app/widgets/sum_show.dart';
 import 'package:e_commerce_mobile_app/widgets/yellow_button.dart';
@@ -32,6 +33,7 @@ class CartScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
+              padding: const EdgeInsets.only(top: 30),
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Image.asset('assets/images/salad.png'),
@@ -44,23 +46,36 @@ class CartScreen extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                return const Divider();
+                return const Divider(
+                  height: 50,
+                );
               },
-              itemCount: 5,
+              itemCount: 6,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(25.0),
+          Padding( 
+            padding: const EdgeInsets.all(25.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SumShow(
+                const SumShow(
                   iconColor: Color(0xFF27214D),
                   iconHeight: 15,
                   iconWidth: 20,
                   text: Text('60,000', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
                 ),
-                YellowButton(name: 'Checkout'),
+                YellowButton(
+                  name: 'Checkout',
+                  onPressed: () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return const DeliverySheet();
+                      },
+                    );
+                  },
+                ),
               ],
             ),
           )

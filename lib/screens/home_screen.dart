@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../widgets/list_of_cards.dart';
+import '../widgets/topic_row.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -37,6 +40,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(24.0),
@@ -91,9 +95,29 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ],
-                ), 
+                ),
               ],
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Text('Recommended Combo', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
+          ),
+          ListOfCards(
+            width: 160,
+            height: 190,
+            imgWidth: 180,
+            imgHeight: 100,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: TopicRow(),
+          ),
+          ListOfCards(
+            width: 170,
+            height: 175,
+            imgWidth: 180,
+            imgHeight: 100,
           ),
         ],
       ),

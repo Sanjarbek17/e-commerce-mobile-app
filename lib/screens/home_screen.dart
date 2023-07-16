@@ -1,9 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../widgets/list_of_cards.dart';
+import '../widgets/product_card.dart';
 import '../widgets/topic_row.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.only(left: 24.0, right: 24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -104,20 +105,43 @@ class HomeScreen extends StatelessWidget {
             child: Text('Recommended Combo', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
           ),
           ListOfCards(
-            width: 160,
-            height: 190,
-            imgWidth: 180,
-            imgHeight: 100,
+            height: 200,
+            children: const [
+              ProductCard(
+                imgHeight: 100,
+                imgWidth: 180,
+                width: 160,
+                imgPath: 'assets/images/salad.png',
+              ),
+              ProductCard(
+                imgHeight: 100,
+                imgWidth: 180,
+                width: 160,
+                imgPath: 'assets/images/salad.png',
+              ),
+            ],
           ),
+          const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: TopicRow(),
           ),
           ListOfCards(
-            width: 170,
-            height: 175,
-            imgWidth: 180,
-            imgHeight: 100,
+            height: 180,
+            children: const [
+              ProductCard(
+                imgHeight: 100,
+                imgWidth: 180,
+                width: 170,
+                imgPath: 'assets/images/salad.png',
+              ),
+              ProductCard(
+                imgHeight: 100,
+                imgWidth: 180,
+                width: 170,
+                imgPath: 'assets/images/salad.png',
+              ),
+            ],
           ),
         ],
       ),

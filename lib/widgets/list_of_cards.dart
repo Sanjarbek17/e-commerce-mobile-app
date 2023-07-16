@@ -2,16 +2,12 @@ import 'package:e_commerce_mobile_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class ListOfCards extends StatelessWidget {
-  final double width;
   final double height;
-  final double imgWidth;
-  final double imgHeight;
+  final List<ProductCard> children;
   const ListOfCards({
     super.key,
-    required this.width,
-    required this.imgWidth,
-    required this.imgHeight,
     required this.height,
+    required this.children,
   });
 
   @override
@@ -22,11 +18,9 @@ class ListOfCards extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
+        clipBehavior: Clip.none,
         padding: const EdgeInsets.only(left: 24, right: 24),
-        children: [
-          ProductCard(imgHeight: imgHeight, imgWidth: imgHeight, width: width),
-          ProductCard(imgHeight: imgHeight, imgWidth: imgHeight, width: width),
-        ],
+        children: children,
       ),
     );
   }

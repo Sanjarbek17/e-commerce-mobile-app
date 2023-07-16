@@ -42,17 +42,17 @@ class TopicButton extends StatelessWidget {
               ? Text(
                   text,
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Color(0xFF928DB4), fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16),
+                  style: const TextStyle(color: Color(0xFF928DB4), fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16),
                 )
               : Text(
                   text,
-                  style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24),
+                  style: const TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24),
                 ),
-          SizedBox(height: 1),
+          const SizedBox(height: 1),
           isActive
               ? Container(
                   width: 22,
-                  decoration: ShapeDecoration(
+                  decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       side: BorderSide(width: 1, strokeAlign: BorderSide.strokeAlignCenter, color: Color(0xFFFFA451)),
                     ),

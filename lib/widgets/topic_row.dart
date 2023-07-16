@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 class TopicRow extends StatefulWidget {
   final List<String> topics;
   const TopicRow({
-    super.key, required this.topics,
+    super.key,
+    required this.topics,
   });
 
   @override
@@ -17,21 +18,19 @@ class _TopicRowState extends State<TopicRow> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 50,
+      height: 60,
       child: ListView.builder(
-        shrinkWrap: true,
-
-        scrollDirection: Axis.horizontal,
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-     itemBuilder: (context, index) => TopicButton(
-          text: widget.topics[index],
-          index: index,
-          onTap: () {
-            Provider.of<IndexProvider>(context, listen: false).setIndex(index);
-          },
-        ),
-        itemCount: widget.topics.length
-      ),
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          itemBuilder: (context, index) => TopicButton(
+                text: widget.topics[index],
+                index: index,
+                onTap: () {
+                  Provider.of<IndexProvider>(context, listen: false).setIndex(index);
+                },
+              ),
+          itemCount: widget.topics.length),
     );
   }
 }

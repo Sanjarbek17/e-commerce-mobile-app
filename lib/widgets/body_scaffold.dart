@@ -45,7 +45,7 @@ class BodyScaffold extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFFA451),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        minimumSize: Size(MediaQuery.of(context).size.width * 0.88, 60),
+                        minimumSize: Size(MediaQuery.of(context).size.width * 0.83, 60),
                       ),
                       child: Text(
                         buttonName,

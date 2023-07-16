@@ -35,7 +35,12 @@ class CompleteScreen extends StatelessWidget {
               const SizedBox(height: 40),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
-                child: const SmallButton(name: 'Continue shopping'),
+                child: SmallButton(
+                  name: 'Continue shopping',
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
               ),
             ],
           ),

@@ -87,8 +87,9 @@ class PaySheet extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           InkWell(
-                            // TODO: complete order fucntion here
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.popUntil(context, (route) => route.isFirst);
+                            },
                             child: const Text(
                               'Complete Order',
                               style: TextStyle(color: Color(0xFFFFA451), fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16),

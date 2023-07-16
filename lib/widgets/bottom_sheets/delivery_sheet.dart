@@ -50,7 +50,7 @@ class DeliverySheet extends StatelessWidget {
                   SmallButton(
                     name: 'Pay on delivery',
                     onPressed: () {
-                      Navigator.pushNamed(context, RouteGenerator.completeScreen);
+                      Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.completeScreen, (route) => route.isFirst);
                     },
                   ),
                   SmallButton(

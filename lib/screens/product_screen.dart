@@ -1,5 +1,11 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../widgets/custom_back_button.dart';
+import '../widgets/sum_show.dart';
+import '../widgets/yellow_button.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -12,26 +18,7 @@ class ProductScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            width: 100,
-            height: 42,
-            padding: const EdgeInsets.all(6),
-            margin: const EdgeInsets.all(24),
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-            ),
-            child: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.arrow_back_ios),
-                  Text('Go back', style: TextStyle(color: Color(0xFF27214D), fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400)),
-                ],
-              ),
-            ),
-          ),
+          const CustomBackButton(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -68,21 +55,18 @@ class ProductScreen extends StatelessWidget {
                                   const Padding(
                                     padding: EdgeInsets.only(left: 20, right: 15),
                                     child: SizedBox(
-                                      width: 30,
-                                      // TODO: Replace with a custom varaible
-                                      child: Text('1', textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.24)),
-                                    ),
+                                        width: 30,
+                                        // TODO: Replace with a custom varaible
+                                        child: Text('1', textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.24))),
                                   ),
                                   SvgPicture.asset('assets/svg/pluss.svg'),
                                 ],
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  SvgPicture.asset('assets/svg/none.svg', color: const Color(0xFF27214D), height: 20, width: 20),
-                                  const SizedBox(width: 4),
-                                  const Text('2,000', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
-                                ],
+                              const SumShow(
+                                iconColor: Color(0xFF27214D),
+                                iconHeight: 20,
+                                iconWidth: 20,
+                                text: Text('2,000', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
                               ),
                             ],
                           ),
@@ -138,11 +122,7 @@ class ProductScreen extends StatelessWidget {
                                 child: SvgPicture.asset('assets/svg/heart.svg', fit: BoxFit.contain),
                               ),
                             ),
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(primary: const Color(0xFFFFA451), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)), minimumSize: const Size(200, 60)),
-                              child: const Text('Add to basket', style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16)),
-                            ),
+                            const YellowButton(name: 'Add to basket'),
                           ],
                         )
                       ],

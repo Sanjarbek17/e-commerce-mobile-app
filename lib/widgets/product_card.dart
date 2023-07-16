@@ -1,3 +1,4 @@
+import 'package:e_commerce_mobile_app/widgets/sum_show.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -92,22 +93,17 @@ class _ProductCardState extends State<ProductCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SvgPicture.asset('assets/svg/none.svg'),
-                      const SizedBox(width: 4),
-                      const Text(
-                        '2,000',
-                        style: TextStyle(
-                          color: Color(0xFFF08626),
-                          fontSize: 14,
-                          fontFamily: 'Brandon Grotesque',
-                          fontWeight: FontWeight.w400,
-                          letterSpacing: -0.14,
-                        ),
+                  const SumShow(
+                    text: Text(
+                      '2,000',
+                      style: TextStyle(
+                        color: Color(0xFFF08626),
+                        fontSize: 14,
+                        fontFamily: 'Brandon Grotesque',
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: -0.14,
                       ),
-                    ],
+                    ),
                   ),
                   InkWell(
                     // TODO: plus add functionality

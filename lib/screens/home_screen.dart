@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
+import 'package:e_commerce_mobile_app/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -19,10 +20,10 @@ class HomeScreen extends StatelessWidget {
         leading: SvgPicture.asset('assets/svg/menu.svg', color: const Color(0xFF27214D), width: 24, height: 12, fit: BoxFit.none),
         actions: [
           // basket icon from icon
-          InkWell(
-            onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.only(right: 24.0),
+          Padding(
+            padding: EdgeInsets.only(right: 24.0),
+            child: InkWell(
+              onTap: () => Navigator.pushNamed(context, RouteGenerator.cartScreen),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,

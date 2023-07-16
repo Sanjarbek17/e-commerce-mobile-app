@@ -1,16 +1,43 @@
 # e_commerce_mobile_app
 
-A new Flutter project.
+This is a mobile app for an e-commerce website. It is built using Flutter and Dart. The app is still in development.
+
+## Screenshots
+
+![Home Screen](flutter_01.png)  
+
+![Basket Screen](flutter_02.png)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-A few resources to get you started if this is your first Flutter project:
+first clone the project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+git clone https://github.com/Sanjarbek17/e-commerce-mobile-app.git
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+
+second run the project
+
+```bash
+flutter run
+
+```
+
+### Prerequisites
+
+All are inside yaml file
+
+
+## Built With
+
+* [Flutter](https://flutter.dev/) - The framework used
+
+## Authors
+
+* **Sanjarbek Saidov** - *Initial work* - [Sanjarbek17](https://github.com/Sanjarbek17)
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

@@ -1,3 +1,4 @@
+import 'package:e_commerce_mobile_app/widgets/bottom_sheets/pay_sheet.dart';
 import 'package:flutter/material.dart';
 
 import 'input_field.dart';
@@ -13,7 +14,7 @@ class DeliverySheet extends StatelessWidget {
       alignment: Alignment.topCenter,
       children: [
         Transform.translate(
-          offset: Offset(0, -60),
+          offset: const Offset(0, -60),
           child: Container(
             width: 50,
             height: 50,
@@ -35,18 +36,30 @@ class DeliverySheet extends StatelessWidget {
               ),
             ),
           ),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InputField(name: 'Delivery address', hintText: '10th avenue, Lekki, Lagos State'),
-              SizedBox(height: 20),
-              InputField(name: 'Number we can call', hintText: '+234 812 345 6789'),
-              SizedBox(height: 40),
+              const InputField(name: 'Delivery address', hintText: '10th avenue, Lekki, Lagos State'),
+              const SizedBox(height: 20),
+              const InputField(name: 'Number we can call', hintText: '+234 812 345 6789'),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SmallButton(name: 'Pay on delivery'),
-                  SmallButton(name: 'Pay with card'),
+                  const SmallButton(name: 'Pay on delivery'),
+                  SmallButton(
+                    name: 'Pay with card',
+                    onPressed: () {
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return const PaySheet();
+                        },
+                      );
+                    },
+                  ),
                 ],
               )
             ],

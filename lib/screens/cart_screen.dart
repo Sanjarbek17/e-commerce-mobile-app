@@ -53,16 +53,31 @@ class CartScreen extends StatelessWidget {
               itemCount: 6,
             ),
           ),
-          Padding( 
+          Padding(
             padding: const EdgeInsets.all(25.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SumShow(
-                  iconColor: Color(0xFF27214D),
-                  iconHeight: 15,
-                  iconWidth: 20,
-                  text: Text('60,000', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Total',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Brandon Grotesque',
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.16,
+                      ),
+                    ),
+                    SumShow(
+                      iconColor: Color(0xFF27214D),
+                      iconHeight: 15,
+                      iconWidth: 20,
+                      text: Text('60,000', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
+                    ),
+                  ],
                 ),
                 YellowButton(
                   name: 'Checkout',

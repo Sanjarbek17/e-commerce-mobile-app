@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/name_provider.dart';
 import '../route.dart';
 import '../widgets/body_scaffold.dart';
 
-class AuthenticationScreen extends StatelessWidget {
+class AuthenticationScreen extends StatefulWidget {
   const AuthenticationScreen({super.key});
 
+  @override
+  State<AuthenticationScreen> createState() => _AuthenticationScreenState();
+}
+
+class _AuthenticationScreenState extends State<AuthenticationScreen> {
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BodyScaffold(
-        onPressed: () => Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.homeScreen, (_) => false),
+        onPressed: () {
+          Provider.of<NameProvider>(context, listen: false).changeName(controller.text);
+          Navigator.pushNamedAndRemoveUntil(context, RouteGenerator.homeScreen, (_) => false);
+        },
         buttonName: 'Start Ordering',
         imagePath: 'assets/images/imgbin2.png',
         child: Column(
@@ -23,6 +34,7 @@ class AuthenticationScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             TextField(
+              controller: controller,
               decoration: InputDecoration(
                 hintText: 'Tony',
                 hintStyle: const TextStyle(color: Color(0xFFC2BCBC), fontSize: 20, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.20),

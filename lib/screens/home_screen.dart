@@ -3,7 +3,9 @@
 import 'package:e_commerce_mobile_app/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/name_provider.dart';
 import '../widgets/list_of_cards.dart';
 import '../widgets/topic_row.dart';
 
@@ -12,6 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String name = Provider.of<NameProvider>(context).name;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -52,9 +55,9 @@ class HomeScreen extends StatelessWidget {
                   width: 257,
                   child: Text.rich(
                     TextSpan(
-                      children: const [
+                      children: [
                         TextSpan(
-                          text: 'Hello Tony, ',
+                          text: 'Hello $name, ',
                           style: TextStyle(color: Color(0xFF423B73), fontSize: 20, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.20),
                         ),
                         TextSpan(

@@ -1,4 +1,5 @@
 import 'package:e_commerce_mobile_app/providers/index_provider.dart';
+import 'package:e_commerce_mobile_app/providers/name_provider.dart';
 import 'package:e_commerce_mobile_app/route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,8 +13,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => IndexProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => IndexProvider(),
+        ),
+        Provider(
+          create: (context) => NameProvider(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Ecommerce App',

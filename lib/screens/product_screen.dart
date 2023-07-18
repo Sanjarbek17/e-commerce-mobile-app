@@ -7,8 +7,17 @@ import '../widgets/custom_back_button.dart';
 import '../widgets/sum_show.dart';
 import '../widgets/yellow_button.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
+
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
+  int count = 1;
+  double price = 2000;
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,22 +61,33 @@ class ProductScreen extends StatelessWidget {
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    SvgPicture.asset('assets/svg/minus.svg'),
-                                    const Padding(
-                                      padding: EdgeInsets.only(left: 20, right: 15),
-                                      child: SizedBox(
-                                          width: 30,
-                                          // TODO: Replace with a custom varaible
-                                          child: Text('1', textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.24))),
+                                    InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            if (count > 1) {
+                                              count--;
+                                            }
+                                          });
+                                        },
+                                        child: SvgPicture.asset('assets/svg/minus.svg')),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 20, right: 15),
+                                      child: SizedBox(width: 30, child: Text(count.toString(), textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.24))),
                                     ),
-                                    SvgPicture.asset('assets/svg/pluss.svg'),
+                                    InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            count++;
+                                          });
+                                        },
+                                        child: SvgPicture.asset('assets/svg/pluss.svg')),
                                   ],
                                 ),
-                                const SumShow(
+                                SumShow(
                                   iconColor: Color(0xFF27214D),
                                   iconHeight: 20,
                                   iconWidth: 20,
-                                  text: Text('2,000', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
+                                  text: Text((price * count).toString(), style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
                                 ),
                               ],
                             ),
@@ -123,7 +143,15 @@ class ProductScreen extends StatelessWidget {
                                   child: SvgPicture.asset('assets/svg/heart.svg', fit: BoxFit.contain),
                                 ),
                               ),
-                              const YellowButton(name: 'Add to basket'),
+                              YellowButton(
+                                name: 'Add to basket',
+                                onPressed: () {
+                                  // Provider.of<BasketProvider>(context, listen: false).addToBasket(BasketModel(
+                                  //   quantity: count,
+                                  //   price: (count * price).toInt(),
+                                  // ));
+                                },
+                              ),
                             ],
                           )
                         ],

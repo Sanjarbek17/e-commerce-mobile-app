@@ -1,3 +1,4 @@
+import 'package:e_commerce_mobile_app/providers/basket_provider.dart';
 import 'package:e_commerce_mobile_app/providers/index_provider.dart';
 import 'package:e_commerce_mobile_app/providers/name_provider.dart';
 import 'package:e_commerce_mobile_app/route.dart';
@@ -20,6 +21,9 @@ class App extends StatelessWidget {
         ),
         Provider(
           create: (context) => NameProvider(),
+        ),
+        Provider(
+          create: (context) => BasketProvider(),
         ),
       ],
       child: MaterialApp(

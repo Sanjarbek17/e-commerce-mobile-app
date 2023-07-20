@@ -6,7 +6,11 @@ class ProductCard extends StatefulWidget {
   final double width;
   final double imgWidth;
   final double imgHeight;
+
   final String imgPath;
+  final String title;
+  final int price;
+
   final VoidCallback? onTap;
   const ProductCard({
     super.key,
@@ -14,6 +18,8 @@ class ProductCard extends StatefulWidget {
     required this.imgWidth,
     required this.imgHeight,
     required this.imgPath,
+    required this.title,
+    required this.price,
     this.onTap,
   });
 
@@ -56,7 +62,7 @@ class _ProductCardState extends State<ProductCard> {
                     fit: StackFit.passthrough,
                     alignment: Alignment.topRight,
                     children: [
-                      Image.asset(
+                      Image.network(
                         widget.imgPath,
                         width: widget.imgWidth,
                         height: widget.imgHeight,
@@ -78,9 +84,9 @@ class _ProductCardState extends State<ProductCard> {
               ],
             ),
             // SizedBox(height: 16),
-            const Text(
-              'Honey lime combo',
-              style: TextStyle(
+            Text(
+             widget.title,
+              style: const TextStyle(
                 color: Color(0xFF27214D),
                 fontSize: 16,
                 fontFamily: 'Brandon Grotesque',
@@ -93,10 +99,10 @@ class _ProductCardState extends State<ProductCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SumShow(
+                   SumShow(
                     text: Text(
-                      '2,000',
-                      style: TextStyle(
+                      widget.price.toString(),
+                      style: const TextStyle(
                         color: Color(0xFFF08626),
                         fontSize: 14,
                         fontFamily: 'Brandon Grotesque',

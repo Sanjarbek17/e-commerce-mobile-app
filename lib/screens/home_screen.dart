@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
+import 'package:e_commerce_mobile_app/providers/product_provider.dart';
 import 'package:e_commerce_mobile_app/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -101,35 +102,38 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(24.0),
             child: Text('Recommended Combo', style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
           ),
-          ListOfCards(
-            height: 200,
-            childImgHeight: 100,
-            childImgWidth: 180,
-            childWidth: 160,
-            children: const [
-              'assets/images/salad.png',
-              'assets/images/salad.png',
-              'assets/images/salad.png',
-            ],
-          ),
+          Consumer<ProductPorivder>(builder: (context, provider, child) {
+            if (provider.status == 'start') {
+              provider.getProducts();
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListOfCards(
+              height: 200,
+              childImgHeight: 100,
+              childImgWidth: 180,
+              childWidth: 160,
+              children: provider.products,
+            );
+          }),
           const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: TopicRow(
-              topics: const ['Hottest', 'Newest', 'Trending', 'Popular'],
+              topics: const ['smartphones', 'laptops', 'fragrances', 'groceries'],
             ),
           ),
-          ListOfCards(
-            height: 180,
-            childImgHeight: 100,
-            childImgWidth: 180,
-            childWidth: 170,
-            children: const [
-              'assets/images/salad.png',
-              'assets/images/salad.png',
-              'assets/images/salad.png',
-            ],
-          ),
+          Consumer<ProductPorivder>(builder: (context, provider, child) {
+            if (provider.status2 == 'start') {
+              return const Center(child: CircularProgressIndicator());
+            }
+            return ListOfCards(
+              height: 180,
+              childImgHeight: 100,
+              childImgWidth: 180,
+              childWidth: 170,
+              children: provider.productsByCategory,
+            );
+          }),
         ],
       ),
     );

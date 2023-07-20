@@ -1,3 +1,4 @@
+import 'package:e_commerce_mobile_app/models/basket_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,13 +15,14 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: FutureBuilder(
-            future: Provider.of<BasketProvider>(context, listen: false).getBasket(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+        child: Consumer<BasketProvider>(
+            builder: (context, provider, child) {
+              if (provider.status == 'start') {
+                provider.getBasket();
                 return const Center(child: CircularProgressIndicator());
               }
-              if (snapshot.hasData) {
+              if (provider.status == 'done') {
+                List<BasketModel> basket = provider.basket;
                 return Column(
                   children: [
                     Container(
@@ -47,12 +49,12 @@ class CartScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 30),
                         itemBuilder: (context, index) {
                           return ListTile(
-                            leading: Image.network(snapshot.data![index].imgPath),
-                            title: Text(snapshot.data![index].title, style: const TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16)),
-                            subtitle: Text('${snapshot.data![index].quantity} packs', style: const TextStyle(color: Colors.black, fontSize: 14, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.14)),
+                            leading: Image.network(basket[index].imgPath),
+                            title: Text(basket[index].title, style: const TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16)),
+                            subtitle: Text('${basket[index].quantity} packs', style: const TextStyle(color: Colors.black, fontSize: 14, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.14)),
                             trailing: SumShow(
                               iconColor: const Color(0xFF27214D),
-                              text: Text(snapshot.data![index].price.toString(), style: const TextStyle(color: Color(0xFF27214D), fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16)),
+                              text: Text(basket[index].price.toString(), style: const TextStyle(color: Color(0xFF27214D), fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16)),
                             ),
                           );
                         },
@@ -61,7 +63,7 @@ class CartScreen extends StatelessWidget {
                             height: 50,
                           );
                         },
-                        itemCount: snapshot.data!.length,
+                        itemCount: basket.length,
                       ),
                     ),
                     Padding(
@@ -107,9 +109,6 @@ class CartScreen extends StatelessWidget {
                     )
                   ],
                 );
-              }
-              if (snapshot.hasError){
-                return  Center(child: Text(snapshot.error.toString()));
               }
               return const Center(child: Text('Error'));
             }),

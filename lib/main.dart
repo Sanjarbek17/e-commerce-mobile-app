@@ -1,6 +1,6 @@
 import 'package:e_commerce_mobile_app/providers/basket_provider.dart';
-import 'package:e_commerce_mobile_app/providers/index_provider.dart';
 import 'package:e_commerce_mobile_app/providers/name_provider.dart';
+import 'package:e_commerce_mobile_app/providers/product_provider.dart';
 import 'package:e_commerce_mobile_app/route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,15 +16,15 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => IndexProvider(),
-        ),
         Provider(
           create: (context) => NameProvider(),
         ),
-        Provider(
+        ChangeNotifierProvider(
           create: (context) => BasketProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => ProductPorivder(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

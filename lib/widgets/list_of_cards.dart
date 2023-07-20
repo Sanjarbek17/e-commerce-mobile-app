@@ -1,6 +1,9 @@
+import 'package:e_commerce_mobile_app/models/product_model.dart';
 import 'package:e_commerce_mobile_app/route.dart';
 import 'package:e_commerce_mobile_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/product_screen.dart';
 
 class ListOfCards extends StatelessWidget {
   final double height;
@@ -8,7 +11,7 @@ class ListOfCards extends StatelessWidget {
   final double childImgWidth;
   final double childImgHeight;
 
-  final List<String> children;
+  final List<ProductModel> children;
   const ListOfCards({
     super.key,
     required this.height,
@@ -34,9 +37,19 @@ class ListOfCards extends StatelessWidget {
             imgHeight: childImgHeight,
             imgWidth: childImgWidth,
             width: childWidth,
-            imgPath: children[index],
+            imgPath: children[index].imgPath,
+            title: children[index].title,
+            price: children[index].price,
             onTap: () {
-              Navigator.pushNamed(context, RouteGenerator.productScreen);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ProductScreen(
+                      price: children[index].price,
+                      imgPath: children[index].imgPath,
+                      title: children[index].title,
+                    ),
+                  ));
             },
           );
         },

@@ -2,22 +2,33 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
+import '../models/basket_model.dart';
+import '../providers/basket_provider.dart';
 import '../widgets/custom_back_button.dart';
 import '../widgets/sum_show.dart';
 import '../widgets/yellow_button.dart';
 
 class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key});
+  final String title;
+  final int price;
+  final String imgPath;
+
+  const ProductScreen({
+    required this.price,
+    required this.imgPath,
+    required this.title,
+    super.key,
+  });
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  int count = 1;
-  double price = 2000;
   bool isFavorite = false;
+  int count = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +43,7 @@ class _ProductScreenState extends State<ProductScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/images/breakfest.png', width: 176, height: 176, fit: BoxFit.cover),
+                Image.network(widget.imgPath, width: 176, height: 176, fit: BoxFit.cover),
               ],
             ),
             // const SizedBox(height: 24),
@@ -52,7 +63,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Text('Quinoa Fruit Salad', textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF27214D), fontSize: 32, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.32)),
+                           Text(widget.title, textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF27214D), fontSize: 32, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.32)),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 30.0),
                             child: Row(
@@ -87,7 +98,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                   iconColor: Color(0xFF27214D),
                                   iconHeight: 20,
                                   iconWidth: 20,
-                                  text: Text((price * count).toString(), style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
+                                  text: Text((widget.price * count).toString(), style: TextStyle(color: Color(0xFF27214D), fontSize: 24, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.24)),
                                 ),
                               ],
                             ),
@@ -146,10 +157,14 @@ class _ProductScreenState extends State<ProductScreen> {
                               YellowButton(
                                 name: 'Add to basket',
                                 onPressed: () {
-                                  // Provider.of<BasketProvider>(context, listen: false).addToBasket(BasketModel(
-                                  //   quantity: count,
-                                  //   price: (count * price).toInt(),
-                                  // ));
+                                  Provider.of<BasketProvider>(context, listen: false).addToBasket(BasketModel(
+                                    id: 1,
+                                    imgPath: widget.imgPath,
+                                    title: widget.title,
+                                    quantity: count,
+                                    price: (count * widget.price).toInt(),
+                                  ));
+                                  Navigator.pop(context);
                                 },
                               ),
                             ],

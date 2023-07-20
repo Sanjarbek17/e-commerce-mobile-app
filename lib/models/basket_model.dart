@@ -3,7 +3,6 @@ class BasketModel {
   final String title;
   final int quantity;
   final int price;
-  final int total;
   final String imgPath;
 /*
 "id": 59,
@@ -19,7 +18,6 @@ class BasketModel {
     required this.title,
     required this.quantity,
     required this.price,
-    required this.total,
     required this.imgPath,
   });
 
@@ -29,7 +27,6 @@ class BasketModel {
       title: json['title'],
       quantity: json['quantity'],
       price: json['price'],
-      total: json['total'],
       imgPath: json['imgPath'],
     );
   }
@@ -40,7 +37,6 @@ class BasketModel {
       'title': title,
       'quantity': quantity,
       'price': price,
-      'total': total,
       'imgPath': imgPath,
     };
   }

@@ -1,4 +1,4 @@
-import 'package:e_commerce_mobile_app/providers/index_provider.dart';
+import 'package:e_commerce_mobile_app/providers/product_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +14,7 @@ class TopicRow extends StatefulWidget {
 }
 
 class _TopicRowState extends State<TopicRow> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,8 +27,12 @@ class _TopicRowState extends State<TopicRow> {
           itemBuilder: (context, index) => TopicButton(
                 text: widget.topics[index],
                 index: index,
+                selected: selectedIndex == index,
                 onTap: () {
-                  Provider.of<IndexProvider>(context, listen: false).setIndex(index);
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                  Provider.of<ProductPorivder>(context, listen: false).getProductsByCategory(['smartphones', 'laptops', 'fragrances', 'groceries'][index]);
                 },
               ),
           itemCount: widget.topics.length),
@@ -38,12 +43,14 @@ class _TopicRowState extends State<TopicRow> {
 class TopicButton extends StatefulWidget {
   final String text;
   final int index;
+  final bool selected;
   final VoidCallback? onTap;
   const TopicButton({
     super.key,
     required this.text,
     required this.index,
     this.onTap,
+    required this.selected,
   });
 
   @override
@@ -59,7 +66,7 @@ class _TopicButtonState extends State<TopicButton> {
         onPressed: widget.onTap,
         child: AnimatedDefaultTextStyle(
           duration: const Duration(milliseconds: 100),
-          style: Provider.of<IndexProvider>(context).index != widget.index
+          style: !widget.selected
               ? const TextStyle(
                   color: Color(0xFF928DB4),
                   fontSize: 16,
@@ -82,7 +89,7 @@ class _TopicButtonState extends State<TopicButton> {
                 height: 40,
                 child: Text(widget.text),
               ),
-              Provider.of<IndexProvider>(context).index == widget.index
+              widget.selected
                   ? Container(
                       width: 22,
                       decoration: const ShapeDecoration(

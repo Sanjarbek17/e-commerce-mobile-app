@@ -1,13 +1,16 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import '../models/basket_model.dart';
 
 import 'package:http/http.dart' as http;
 
-class BasketProvider {
+class BasketProvider with ChangeNotifier {
   List<BasketModel> basket = [];
+  String status = 'start';
 
-  Future<List<BasketModel>> getBasket() async {
+  Future<void> getBasket() async {
     Uri url = Uri.parse('https://dummyjson.com/carts/user/5');
     http.Response response = await http.get(url);
 
@@ -25,11 +28,17 @@ class BasketProvider {
         imgPath: imgPath,
         price: product['price'],
         quantity: product['quantity'],
-        total: product['total'],
         // discountPercentage: product['discountPercentage'] as double,
         // discountedPrice: product['discountedPrice'] as double,
       ));
     }
-    return basket;
+    print('data has been fetched');
+    status = 'done';
+    notifyListeners();
+  }
+
+  void addToBasket(BasketModel product) {
+    basket.add(product);
+    notifyListeners();
   }
 }

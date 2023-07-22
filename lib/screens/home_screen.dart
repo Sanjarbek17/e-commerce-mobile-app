@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
             return ListOfCards(
               height: 200,
               childImgHeight: 100,
-              childImgWidth: 180,
+              childImgWidth: 100,
               childWidth: 160,
               children: provider.products,
             );
@@ -129,7 +129,7 @@ class HomeScreen extends StatelessWidget {
             return ListOfCards(
               height: 180,
               childImgHeight: 100,
-              childImgWidth: 180,
+              childImgWidth: 100,
               childWidth: 170,
               children: provider.productsByCategory,
             );

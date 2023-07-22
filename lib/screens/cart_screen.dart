@@ -49,7 +49,7 @@ class CartScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 30),
                         itemBuilder: (context, index) {
                           return ListTile(
-                            leading: Image.network(basket[index].imgPath),
+                            leading: Image.network(basket[index].imgPath, width: 50, height: 50),
                             title: Text(basket[index].title, style: const TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w500, letterSpacing: -0.16)),
                             subtitle: Text('${basket[index].quantity} packs', style: const TextStyle(color: Colors.black, fontSize: 14, fontFamily: 'Brandon Grotesque', fontWeight: FontWeight.w400, letterSpacing: -0.14)),
                             trailing: SumShow(

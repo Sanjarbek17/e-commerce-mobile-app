@@ -1,5 +1,4 @@
 import 'package:e_commerce_mobile_app/models/product_model.dart';
-import 'package:e_commerce_mobile_app/route.dart';
 import 'package:e_commerce_mobile_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 

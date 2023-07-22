@@ -66,6 +66,7 @@ class _ProductCardState extends State<ProductCard> {
                         widget.imgPath,
                         width: widget.imgWidth,
                         height: widget.imgHeight,
+                        fit: BoxFit.fill,
                       ),
                       Positioned(
                         right: 0,
